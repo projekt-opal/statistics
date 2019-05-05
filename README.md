@@ -1,1 +1,1 @@
-# statistics
+# OPAL statistics
