@@ -41,7 +41,7 @@ public class DataExploration extends QueryExecution {
 		}
 
 		// Get number of distributions in graph <http://projekt-opal.de>
-		if (true) {
+		if (false) {
 			queryString = Queries.getQuery("number-of-distributions");
 		}
 
