@@ -1,0 +1,8 @@
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+
+SELECT DISTINCT ?catalog
+WHERE {
+  GRAPH <http://projekt-opal.de> {
+    ?catalog a dcat:Catalog
+  }
+}

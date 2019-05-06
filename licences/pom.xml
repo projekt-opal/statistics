@@ -2,18 +2,47 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+
 	<groupId>org.dice_research.opal</groupId>
 	<artifactId>statistics-licences</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+
+	<properties>
+		<maven.compiler.source>1.11</maven.compiler.source>
+		<maven.compiler.target>1.11</maven.compiler.target>
+	</properties>
+
 	<dependencies>
-	
-		<!-- https://mvnrepository.com/artifact/org.apache.jena/jena-core -->
+
+		<!-- OPAL common -->
+		<!-- https://github.com/projekt-opal/common -->
+		<dependency>
+			<groupId>org.dice_research.opal</groupId>
+			<artifactId>common</artifactId>
+			<version>1.0.3</version>
+		</dependency>
+
+		<!--RDF -->
+
+		<!-- Added as org.apache.jena dependency produced following error: -->
+		<!-- Missing artifact com.github.jsonld-java.jsonld-java:jsonld-java:bundle:0.12.3 -->
+		<!-- https://mvnrepository.com/artifact/com.github.jsonld-java/jsonld-java -->
+		<dependency>
+			<groupId>com.github.jsonld-java</groupId>
+			<artifactId>jsonld-java</artifactId>
+			<version>0.12.4</version>
+		</dependency>
+
+		<!-- jena-rdfconnection > jena-arq > jena-core > jena-base -->
+		<!-- https://mvnrepository.com/artifact/org.apache.jena/jena-rdfconnection -->
 		<dependency>
 			<groupId>org.apache.jena</groupId>
-			<artifactId>jena-core</artifactId>
-			<version>3.10.0</version>
+			<artifactId>jena-rdfconnection</artifactId>
+			<version>3.11.0</version>
 		</dependency>
-		
+
+		<!-- I/O -->
+
 		<!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
 		<dependency>
 			<groupId>commons-io</groupId>
@@ -27,7 +56,7 @@
 			<artifactId>json</artifactId>
 			<version>20180813</version>
 		</dependency>
-		
+
 	</dependencies>
 
 </project>

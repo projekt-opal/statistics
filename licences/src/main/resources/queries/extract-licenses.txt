@@ -1,0 +1,15 @@
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dct: <http://purl.org/dc/terms/>
+
+SELECT DISTINCT ?dataset ?license ?catalog
+WHERE {
+  GRAPH <http://projekt-opal.de> {
+    ?dataset a dcat:Dataset .
+    ?dataset dcat:distribution ?distribution .
+    ?distribution dct:license ?license .
+    ?catalog dcat:dataset ?dataset
+  }
+}
+ORDER BY ?dataset
+LIMIT 10
+OFFSET 0

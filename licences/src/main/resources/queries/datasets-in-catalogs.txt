@@ -1,0 +1,10 @@
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+
+SELECT DISTINCT ?catalog (COUNT(?dataset) as ?datasets)
+WHERE {
+  GRAPH <http://projekt-opal.de> {
+    ?catalog a dcat:Catalog .
+    ?catalog dcat:dataset ?dataset
+  }
+}
+GROUP BY ?catalog

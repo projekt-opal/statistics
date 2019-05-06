@@ -15,13 +15,14 @@ import java.util.Properties;
 public abstract class Config {
 
 	// Config keys
-	
+
 	public static final String SPARQL_ENDPOINT_EUROPEANDATAPORTAL = "sparql.endpoint.europeandataportal";
 	public static final String SPARQL_ENDPOINT_GOVDATA = "sparql.endpoint.govdata";
 	public static final String SPARQL_ENDPOINT_MCLOUD = "sparql.endpoint.mcloud";
+	public static final String SPARQL_ENDPOINT_OPAL = "sparql.endpoint.opal";
 
 	// Internal
-	
+
 	private final static String PROPERTIES_FILE = "src/main/resources/config.properties";
 	private final static String PROPERTIES_FILE_PRIVATE = "src/main/resources/private.properties";
 	private final static Properties properties = new Properties();

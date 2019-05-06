@@ -1,0 +1,9 @@
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+DESCRIBE ?resouce
+WHERE { 
+  GRAPH <http://projekt-opal.de> {
+    ?resouce a dcat:Dataset
+  }
+}
+LIMIT 1
+OFFSET 0

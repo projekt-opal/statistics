@@ -1,0 +1,12 @@
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dct: <http://purl.org/dc/terms/>
+
+SELECT DISTINCT (?license as ?Lizenz) (COUNT(?distribution) as ?Anzahl)
+WHERE {
+  GRAPH <http://projekt-opal.de> {
+    ?distribution a dcat:Distribution .
+    ?distribution dct:license ?license
+  }
+}
+GROUP BY ?license
+ORDER BY DESC(?Anzahl)

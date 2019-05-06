@@ -1,0 +1,8 @@
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+
+SELECT DISTINCT  (COUNT(?distribution) as ?distributions)
+WHERE {
+  GRAPH <http://projekt-opal.de> {
+    ?distribution a dcat:Distribution 
+  }
+}
