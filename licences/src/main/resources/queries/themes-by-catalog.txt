@@ -1,0 +1,14 @@
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dct: <http://purl.org/dc/terms/>
+
+SELECT DISTINCT (?theme as ?dcattheme) (COUNT(?theme) as ?count) ?catalog
+FROM <http://projekt-opal.de>
+WHERE {
+  ?dataset dcat:theme ?theme .
+  OPTIONAL {
+    ?catalog a dcat:Catalog .
+    ?catalog dcat:dataset ?dataset
+  }
+}
+GROUP BY ?theme ?catalog
+ORDER BY DESC(?count)

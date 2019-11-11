@@ -76,6 +76,15 @@ public class DataExploration extends QueryExecution {
 			queryString = Queries.getQuery("extract-licenses");
 		}
 
+		// Get theme information
+		if (false) {
+			queryString = Queries.getQuery("number-of-themes");
+		}
+
+		if (false) {
+			queryString = Queries.getQuery("themes-by-catalog");
+		}
+
 		// Execution
 		if (queryString == null) {
 			System.err.println("Please provide a query.");

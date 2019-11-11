@@ -24,7 +24,7 @@ public class SpreadsheetExtraction extends QueryExecution {
 		boolean isFusekiEndpoint = true;
 		Consumer<ResultSet> consumer = SpreadsheetExtraction::printForPdf;
 		int queryType = SELECT;
-		String queryString = Queries.getQuery("number-of-licenses");
+		String queryString = Queries.getQuery("number-of-themes");
 
 		// Execution
 		System.out.println(queryString);
