@@ -46,6 +46,7 @@ public class QueryExecution {
 	 */
 	protected static void execute(String sparqlEndpoint, boolean isFusekiEndpoint, Consumer<ResultSet> consumer,
 			int queryType, String queryString) {
+		System.out.println("Requesting " + sparqlEndpoint);
 		try (SparqlQueryConnection connection = connect(sparqlEndpoint, isFusekiEndpoint)) {
 			if (queryType == SELECT) {
 				connection.queryResultSet(queryString, consumer);

@@ -16,16 +16,21 @@ import org.apache.jena.query.ResultSet;
 /**
  * OPAL licence statistics.
  * 
+ * Extracts datasets, licenses, and catalogs. Writes results to files. Files can
+ * be analyzed with {@link LicenseAnalysis}.
+ * 
+ * Attention: High workload.
+ * 
  * Configuration and execution in {@link #main(String[])} method.
  *
  * @author Adrian Wilke
  */
 public class LicenseExtraction extends QueryExecution {
 
-	public final static File FILE_CATALOGS = new File("catalogs.txt");
-	public final static File FILE_DATASETS = new File("datasets.txt");
-	public final static File FILE_LICENCES = new File("licences.txt");
-	public final static File FILE_META = new File("meta.txt");
+	public final static File FILE_CATALOGS = new File(Config.get(Config.DIRECTORY_OUT), "catalogs.txt");
+	public final static File FILE_DATASETS = new File(Config.get(Config.DIRECTORY_OUT), "datasets.txt");
+	public final static File FILE_LICENCES = new File(Config.get(Config.DIRECTORY_OUT), "licences.txt");
+	public final static File FILE_META = new File(Config.get(Config.DIRECTORY_OUT), "meta.txt");
 
 	public final static String PREFIX = "http://projekt-opal.de/dataset/";
 	public final static int PREFIX_LENGTH = PREFIX.length();
@@ -43,7 +48,14 @@ public class LicenseExtraction extends QueryExecution {
 
 	static {
 		try {
+			File directoryOut = new File(Config.get(Config.DIRECTORY_OUT));
+			if (!directoryOut.exists()) {
+				directoryOut.mkdirs();
+			}
 			writer = new BufferedWriter(new FileWriter(FILE_DATASETS, true));
+
+			// User info
+			System.out.println(FILE_DATASETS.getAbsolutePath());
 		} catch (IOException e) {
 			System.err.println(e);
 			System.exit(1);
@@ -58,13 +70,15 @@ public class LicenseExtraction extends QueryExecution {
 		// Configuration
 		String sparqlEndpoint = Config.get(Config.SPARQL_ENDPOINT_OPAL);
 		boolean isFusekiEndpoint = true;
-		Consumer<ResultSet> consumer = LicenseExtraction::writeToFile;
+
 		int queryType = SELECT;
 		String queryString = Queries.getQuery("extract-licenses");
 		int offset = 0;
+		Consumer<ResultSet> consumer = LicenseExtraction::writeToFile;
 
 		// Execution
 		while (run) {
+			System.out.println("Offset: " + offset);
 			execute(sparqlEndpoint, isFusekiEndpoint, consumer, queryType,
 					queryString.replace("LIMIT 10", "LIMIT " + LIMIT).replace("OFFSET 0", "OFFSET " + offset));
 			offset += LIMIT;
@@ -74,6 +88,8 @@ public class LicenseExtraction extends QueryExecution {
 		// Lists
 		FileUtils.writeLines(FILE_LICENCES, licenses);
 		FileUtils.writeLines(FILE_CATALOGS, catalogs);
+		System.out.println(FILE_LICENCES.getAbsolutePath());
+		System.out.println(FILE_CATALOGS.getAbsolutePath());
 
 		// Meta
 		StringBuffer stringBuffer = new StringBuffer();

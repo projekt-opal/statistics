@@ -8,7 +8,7 @@ import org.apache.jena.query.ResultSet;
 import org.apache.jena.rdf.model.RDFNode;
 
 /**
- * Extracts data for use in spreadsheets.
+ * Executes query and prints results in format for use in spreadsheets.
  *
  * @author Adrian Wilke
  */

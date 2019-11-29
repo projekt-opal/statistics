@@ -1,4 +1,6 @@
 src/main/resources/private.properties
+results
+
 
 
 ### https://github.com/github/gitignore/blob/master/Java.gitignore

@@ -8,7 +8,7 @@ import java.util.Properties;
  * Configuration.
  * 
  * To configure the project, copy {@link Config#PROPERTIES_FILE} to
- * {@link Config#PROPERTIES_FILE_PRIVATE}.
+ * {@link Config#PROPERTIES_FILE_PRIVATE} and edit the values in the file.
  *
  * @author Adrian Wilke
  */
@@ -20,11 +20,13 @@ public abstract class Config {
 	public static final String SPARQL_ENDPOINT_GOVDATA = "sparql.endpoint.govdata";
 	public static final String SPARQL_ENDPOINT_MCLOUD = "sparql.endpoint.mcloud";
 	public static final String SPARQL_ENDPOINT_OPAL = "sparql.endpoint.opal";
+	public static final String DIRECTORY_OUT = "directory.out";
 
 	// Internal
 
 	private final static String PROPERTIES_FILE = "src/main/resources/config.properties";
 	private final static String PROPERTIES_FILE_PRIVATE = "src/main/resources/private.properties";
+
 	private final static Properties properties = new Properties();
 
 	public static String get(String key) {

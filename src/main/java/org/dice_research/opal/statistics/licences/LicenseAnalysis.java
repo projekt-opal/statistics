@@ -10,6 +10,11 @@ import java.util.Map.Entry;
 import org.apache.commons.io.FileUtils;
 import org.apache.jena.ext.com.google.common.io.Files;
 
+/**
+ * Reads files created in {@link LicenseExtraction}. Prints some statistics.
+ *
+ * @author Adrian Wilke
+ */
 public class LicenseAnalysis {
 
 	private final static int TYPE_DATASET = 0;
@@ -17,7 +22,6 @@ public class LicenseAnalysis {
 	private final static int TYPE_CATALOG = 2;
 
 	private static int type = 0;
-	private static String dataset;
 	private static int license;
 	private static int catalog;
 
@@ -52,7 +56,7 @@ public class LicenseAnalysis {
 
 	private static void readLine(String result) {
 		if (type == TYPE_DATASET) {
-			dataset = result;
+			// Not interesting here
 		} else if (type == TYPE_LICENSE) {
 			license = Integer.valueOf(result);
 		} else if (type == TYPE_CATALOG) {

@@ -8,6 +8,8 @@ import org.apache.jena.query.ResultSet;
 /**
  * Data exploration.
  * 
+ * Reads queries from text files and prints results.
+ * 
  * Configuration and execution in {@link #main(String[])} method.
  *
  * @author Adrian Wilke
@@ -57,7 +59,7 @@ public class DataExploration extends QueryExecution {
 		if (false) {
 			queryString = Queries.getQuery("licenses-by-catalog");
 		}
-		
+
 		// Describe a resource in graph <http://projekt-opal.de>
 		if (false) {
 			String resource;
