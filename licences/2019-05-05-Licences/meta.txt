@@ -1,4 +1,0 @@
-Date: 1557082414934
-Dataset prefix: http://projekt-opal.de/dataset/
-Processed results: 21878
-Runtime: 18 seconds
